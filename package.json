@@ -1,12 +1,16 @@
 {
   "name": "zeche",
   "version": "0.0.1",
-  "description": "",
+  "description": "CLI software project handling tool",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neuedaten/zeche.git"
+  },
   "main": "./lib/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Bastian Schwabe",
   "license": "MIT",
   "bin": {
     "zeche": "bin/zeche.js"
@@ -20,9 +24,7 @@
     "dotenv-expand": "^4.2.0",
     "lodash": "^4.17.11",
     "moment": "^2.23.0",
-    "ora": "^3.0.0"
-  },
-  "devDependencies": {
+    "ora": "^3.0.0",
     "opn": "^5.3.0"
   }
 }
