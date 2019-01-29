@@ -30,6 +30,10 @@ zeche is a CLI software project handling tool.
 
 ``zeche ssh <where>``
 
+### Browser
+
+``zeche browser <where>``
+
 ## Configuration
 
 - config file in your project root: *zeche.config.js*
