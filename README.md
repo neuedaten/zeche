@@ -22,6 +22,24 @@ zeche is a CLI software project handling tool.
 
 ``zeche deploy database <exactly> <from> <to>``
 
+### Backup
+
+#### List
+``zeche backup list <where>``
+
+#### Create file backup
+``zeche backup files <what> <where>``
+
+#### Create database backup
+``zeche backup db all <where>``
+
+#### Rollback 
+``zeche backup rollback <id> <where>``
+
+#### rm 
+``zeche backup rm <id> <where>``
+
+
 ### Dump
 
 ``zeche dump <what> <where>``
