@@ -42,7 +42,7 @@ zeche is a CLI software project handling tool.
 
 ### Dump
 
-``zeche dump <what> <where>``
+``zeche dump <import/export> <what> <where>``
 
 ### SSH
 
