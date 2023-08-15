@@ -1,6 +1,6 @@
 {
   "name": "zeche",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "CLI software project handling tool",
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
     "commander": "^2.15.1",
     "dotenv": "^6.2.0",
     "dotenv-expand": "^4.2.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "moment": "^2.23.0",
     "opn": "^5.3.0",
     "ora": "^3.0.0"
