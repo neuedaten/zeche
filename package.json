@@ -1,6 +1,6 @@
 {
   "name": "zeche",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "CLI software project handling tool",
   "repository": {
     "type": "git",
@@ -8,13 +8,19 @@
   },
   "main": "./lib/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test test/*.test.js"
   },
   "author": "Bastian Schwabe",
   "license": "MIT",
   "bin": {
     "zeche": "bin/zeche.js"
   },
+  "files": [
+    "bin",
+    "lib",
+    "index.js",
+    "index-sync.js"
+  ],
   "preferGlobal": true,
   "dependencies": {
     "chalk": "^2.4.2",
