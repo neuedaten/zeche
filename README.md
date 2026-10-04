@@ -77,6 +77,36 @@ live: {
 `rsyncParameters` replaces the default flags completely, so include `-r` or `-a` yourself.
 (Older configurations may contain `ssh.rsyncParams`; that key was never read and still is not.)
 
+### Database: tools, socket, separate login
+
+The `db` block of an environment knows three optional keys besides host, port, user, password and
+database:
+
+```js
+live: {
+  ssh: { host: '…', user: 'deploy', key: '…', params: '…' },        // files: a restricted rsync-only login
+  db: {
+    host: 'localhost', port: '3306',
+    socket: '/run/mysqld/mysqld.sock',            // use -S <socket> instead of -h/-P
+    database: '…', user: '…', password: '…',
+    ssh: { user: 'root', key: '/path/to/admin_key' },  // database and backup commands use this login
+    tools: { dump: 'mariadb-dump', client: 'mariadb' } // program names, default mysqldump / mysql
+  },
+  paths: { app: '/var/www/app/incoming/', backup: '/var/backups/zeche/app' }
+}
+```
+
+- `db.ssh` overrides `ssh` field by field (host, user, key, params) for everything that touches
+  the database or the backup store: `deploy db`, `dump`, every `backup` command (`files`, `db`,
+  `list`, `rollback`, `rm`), the automatic backups before a deployment, and the transfer of dump
+  files. The backup store (`paths.backup`, `backup.json`) is shared by file and database backups
+  and lives on that host, so it is reached the same way. File deployments themselves keep using
+  `ssh`. Without `db.ssh` nothing changes.
+- `db.socket` connects through a Unix socket (`-S`). MariaDB often allows a user from `localhost`
+  but not from `127.0.0.1`, and `-h localhost -P 3306` goes over TCP.
+- `db.tools` names the dump and client programs. MariaDB 11 images ship only `mariadb-dump` and
+  `mariadb`, without the `mysql*` compatibility names. Works together with `container_exec`.
+
 ## Hooks
 
 Every action runs two hooks: `before`, `after`. For a file deployment they live next to the
